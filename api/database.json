@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "email": "norwood@norwood.com",
+      "password": "norwood",
+      "name": "",
+      "fullName": "norwood",
+      "id": 1
+    },
+    {
+      "email": "User1@email.com",
+      "password": "password",
+      "name": "",
+      "fullName": "User1",
+      "id": 2
+    },
+    {
+      "email": "2@two.com",
+      "password": "two",
+      "name": "",
+      "fullName": "UserTwo",
+      "id": 3
+    }
+  ],
+  "gear": [
+    {
+      "title": "geartitle",
+      "weight": "Gearweight",
+      "entryText": "geardesc",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "testing",
+      "weight": "itemweight",
+      "entryText": "geardescr",
+      "userId": 1,
+      "id": 2
+    }
+  ],
+  "messages": [
+    {
+      "userId": 2,
+      "message": "test message",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "message": "messagetest",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "message": "Is this working?",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "message": "hello",
+      "id": 6
+    }
+  ],
+  "trips": [
+    {
+      "title": "Trip1",
+      "dateTime": "2023-11-17",
+      "location": "the lake",
+      "entryText": "Trip to the lake.",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "entryText": "testing display",
+      "location": "loctest",
+      "dateTime": "2023-11-25",
+      "title": "triptest4",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "title": "5",
+      "location": "5",
+      "entryText": "5",
+      "dateTime": "2023-12-05",
+      "userId": 1,
+      "id": 3
+    }
+  ]
+}
