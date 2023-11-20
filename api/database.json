@@ -64,10 +64,11 @@
     {
       "title": "Trip1",
       "dateTime": "2023-11-17",
-      "location": "the lake",
-      "entryText": "Trip to the lake.",
+      "location": "",
+      "entryText": "",
       "userId": 2,
-      "id": 1
+      "id": 1,
+      "tripId": 1
     },
     {
       "entryText": "testing display",
@@ -75,15 +76,25 @@
       "dateTime": "2023-11-25",
       "title": "triptest4",
       "userId": 1,
-      "id": 2
+      "id": 2,
+      "tripId": 1
     },
     {
-      "title": "5",
-      "location": "5",
-      "entryText": "5",
+      "title": "Test edit",
+      "location": "Test edit",
+      "entryText": "Test edit",
       "dateTime": "2023-12-05",
       "userId": 1,
-      "id": 3
+      "id": 3,
+      "tripId": 1
+    },
+    {
+      "title": "anotherone",
+      "location": "anotheranotherone",
+      "entryText": "anotherone",
+      "dateTime": "2023-12-07",
+      "userId": 1,
+      "id": 4
     }
   ]
 }
