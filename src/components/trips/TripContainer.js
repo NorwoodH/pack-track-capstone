@@ -3,6 +3,10 @@ import { TripList } from "./TripList.js"
 import { getAllTripEntries } from "./TripAPIManager.js"
 import { TripForm } from "./TripForm.js"
 
+
+//display list of trips 
+
+
 export const TripContainer = () => {
     const [tripEntries, setTripEntries ] = useState([])
 
@@ -36,7 +40,7 @@ export const TripContainer = () => {
                 Trips
             </h1>
             <p className="subtitle">
-                 Plain your trip
+                 Plan your trip
             </p>
             <div className="columns">
                 <div className="column is-three-fifths">

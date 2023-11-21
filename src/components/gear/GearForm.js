@@ -1,10 +1,13 @@
-
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 
-export const GearForm = ({}) => {
- const [GearEntry, setGearEntry] = useState({})
+export const GearForm = ({updateGearState}) => {
+ const [GearEntry, setGearEntry] = useState({
+    title: '',
+    weight: '',
+    entryText: ''
+ });
 
  const navigate = useNavigate()
  const activeUser = localStorage.getItem("activeUser");
@@ -33,8 +36,10 @@ export const GearForm = ({}) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(entryToSend),
-        }).then(r => r.json())
-        .then(r => setGearEntry({}))
+        })
+        .then(r => r.json())
+        .then(updateGearState())
+        .then(setGearEntry({title: '', weight: '', entryText: ''}))
         .then(() => navigate("/gear"))
  }}
 
@@ -42,9 +47,9 @@ export const GearForm = ({}) => {
     return ( 
         <form onSubmit={saveEntry}>
             <div className="field">
-                <label className="label">Title</label>
+                <label className="label">Gear Item</label>
                 <div className="control">
-                    <input name="title" className="input" type="text" placeholder="Name your gear" value={GearEntry.title} onChange={handleControlledInputChange}/>
+                    <input name="title" className="input" type="text" placeholder="Enter gear" value={GearEntry.title} onChange={handleControlledInputChange}/>
                 </div>
             </div>
             <div className="field">
@@ -56,13 +61,13 @@ export const GearForm = ({}) => {
                  */}
             </div>
             <div className="field">
-                <label className="label">Item Weight</label>
+                <label className="label">Gear Weight</label>
                 <div className="control">
                     <input name="weight" className="input" type="text" placeholder="Enter item weight" value={GearEntry.weight} onChange={handleControlledInputChange}/>
                 </div>
                 </div>
             <div className="field">
-                <label className="label">Gear</label>
+                <label className="label">Gear Description</label>
                 <div className="control">
                     <textarea name="entryText" className="textarea" placeholder="Gear description ..." value={GearEntry.entryText}  onChange={handleControlledInputChange}></textarea> 
                 </div>

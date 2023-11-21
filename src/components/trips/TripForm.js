@@ -3,8 +3,22 @@ import { useNavigate } from "react-router-dom";
 
 
 
-export const TripForm = ({}) => {
- const [TripEntry, setTripEntry] = useState({})
+export const TripForm = ({ updateTripState }) => {
+ const [TripEntry, setTripEntry] = useState({
+    title: '',
+    location: '',
+    entryText: '',
+    dateTime: '',
+    imageURL: ''
+ });
+
+ //const for image upload
+ const [file, setFile] = useState();
+
+ const handleChange = (e) => {
+     setFile(URL.createObjectURL(e.target.files[0]));
+ };
+
 
  const navigate = useNavigate()
  const activeUser = localStorage.getItem("activeUser");
@@ -31,8 +45,10 @@ export const TripForm = ({}) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(entryToSend),
-        }).then(r => r.json())
-        .then(r => setTripEntry({}))
+        })
+        .then(r => r.json())
+        .then(updateTripState())
+        .then(setTripEntry({title: '', location: '', entryText: '', dateTime: ''}))
         .then(() => navigate("/trips"))
  }}
 
@@ -62,6 +78,11 @@ export const TripForm = ({}) => {
                     <textarea name="entryText" className="textarea" placeholder="Trip description ..." value={TripEntry.entryText}  onChange={handleControlledInputChange}></textarea> 
                 </div>
             </div>
+            <div>
+                <h2>Add trip image:</h2>
+                <input type="file" onChange={handleChange} />
+                <img src={file} />
+           </div>
 
             <div className="control">
                 <button type="submit" className="btn btn-success">Submit</button>

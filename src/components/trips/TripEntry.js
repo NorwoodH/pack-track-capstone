@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react"
 
 
-export const TripEntry = ({singleTrip }) => {
+export const TripEntry = ({singleTrip , updateTripState }) => {
   const [showForm, setShowForm] = useState(false)
   const [editTrip, setEditTrip] = useState({})
 
@@ -23,7 +22,6 @@ const updateEntry = (e) => {
   e.preventDefault()
 
   const entryToSend = {...editTrip}
-  entryToSend.tripId = 1
 
       fetch(`http://localhost:8088/trips/${editTrip.id}`, {
         method: "PUT",
@@ -31,25 +29,17 @@ const updateEntry = (e) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(entryToSend),
-      }).then(r=> r.json())
-      .then(() => {
-        setShowForm(false)
-        })
-      
+      })
+      .then(r=> r.json())
+      .then(() => {setShowForm(false)})
+      .then(updateTripState())
 }
 
- const deleteTripEntry = (deleteTrip) => {
-  if(singleTrip.id){
-      return <button onClick={() => {
-          fetch(`http://localhost:8088/trips/${deleteTrip}`, {
-              method: "DELETE"
-          })
-      }} className= "delete">Delete</button>
-  }
-  else {
-      return ""
-  }
+const deleteTripEntry = (id)=> {
+  return fetch(`  http://localhost:8088/trips/${id}`, {method: "DELETE"})
+    .then(updateTripState())
 }
+
 
    return <>
    {!showForm ? 
@@ -57,7 +47,7 @@ const updateEntry = (e) => {
  
           <div className="trip-header">
            <p>{singleTrip.title}</p>
-           
+           <p>{singleTrip.dateTime}</p>
     </div>
     <div className="trip-body">
       </div>
@@ -73,23 +63,23 @@ const updateEntry = (e) => {
  
     <div className="trip-header">
     <input name="title"  type="text" placeholder="Trip name" value={editTrip.title} onChange={handleControlledInputChange}/>     <p></p>
+
      <input type="Date" name="dateTime" value={editTrip.dateTime}  onChange={handleControlledInputChange}/>
 </div>
+
 <div className="trip-body">
-<input name="entryText" type="text" placeholder="Trip entry field." value={editTrip.entryText}  onChange={handleControlledInputChange} />
+<input name="location" type="text" placeholder="Trip location field." value={editTrip.location}  onChange={handleControlledInputChange} />
 </div>
+
 <div className="event-body">
-<textarea name="location" className="textarea" placeholder="Trip location field." value={editTrip.location}  onChange={handleControlledInputChange}> </textarea>
+<textarea name="entryText" className="textarea" placeholder="Trip entry field." value={editTrip.entryText}  onChange={handleControlledInputChange}> </textarea>
 </div>
+
 
 <button className="btn btn-success"  onClick={(e) => updateEntry(e)}>Save</button>
 <button className="btn btn-secondary"  onClick={() => setShowForm(!showForm)}>Cancel</button>
-
 
 </article>
 }
     </>
 }
-
-
-

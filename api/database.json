@@ -20,24 +20,16 @@
       "name": "",
       "fullName": "UserTwo",
       "id": 3
-    }
-  ],
-  "gear": [
-    {
-      "title": "geartitle",
-      "weight": "Gearweight",
-      "entryText": "geardesc",
-      "userId": 1,
-      "id": 1
     },
     {
-      "title": "testing",
-      "weight": "itemweight",
-      "entryText": "geardescr",
-      "userId": 1,
-      "id": 2
+      "email": "anothertest@email.com",
+      "password": "password",
+      "name": "",
+      "fullName": "Anothertest",
+      "id": 4
     }
   ],
+  "gear": [],
   "messages": [
     {
       "userId": 2,
@@ -58,43 +50,21 @@
       "userId": 1,
       "message": "hello",
       "id": 6
+    },
+    {
+      "userId": 4,
+      "message": "Testusermessage",
+      "id": 7
     }
   ],
   "trips": [
     {
-      "title": "Trip1",
-      "dateTime": "2023-11-17",
-      "location": "",
-      "entryText": "",
-      "userId": 2,
-      "id": 1,
-      "tripId": 1
-    },
-    {
-      "entryText": "testing display",
-      "location": "loctest",
-      "dateTime": "2023-11-25",
-      "title": "triptest4",
-      "userId": 1,
-      "id": 2,
-      "tripId": 1
-    },
-    {
-      "title": "Test edit",
-      "location": "Test edit",
-      "entryText": "Test edit",
-      "dateTime": "2023-12-05",
-      "userId": 1,
-      "id": 3,
-      "tripId": 1
-    },
-    {
-      "title": "anotherone",
-      "location": "anotheranotherone",
-      "entryText": "anotherone",
-      "dateTime": "2023-12-07",
-      "userId": 1,
-      "id": 4
+      "title": "change-trip-name",
+      "location": "location name update work",
+      "entryText": "work-work-work",
+      "dateTime": "2023-12-23",
+      "userId": 4,
+      "id": 1
     }
   ]
 }

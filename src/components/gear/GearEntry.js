@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react"
 
 
-export const GearEntry = ({singleGear }) => {
+export const GearEntry = ({singleGear , updateGearState }) => {
   const [showForm, setShowForm] = useState(false)
   const [editGear, setEditGear] = useState({})
 
@@ -23,7 +22,6 @@ const updateEntry = (e) => {
   e.preventDefault()
 
   const entryToSend = {...editGear}
-  entryToSend.gearId = +entryToSend.gearId
 
       fetch(`http://localhost:8088/gear/${editGear.id}`, {
         method: "PUT",
@@ -31,24 +29,15 @@ const updateEntry = (e) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(entryToSend),
-      }).then(r=> r.json())
-      .then(() => {
-        setShowForm(false)
-        })
-      
+      })
+      .then(r=> r.json())
+      .then(updateGearState)
+      .then(() => {setShowForm(false)})
 }
 
- const deleteGearEntry = (deleteGear) => {
-  if(singleGear.id){
-      return <button onClick={() => {
-          fetch(`http://localhost:8088/gear/${deleteGear}`, {
-              method: "DELETE"
-          })
-      }} className= "delete">Delete</button>
-  }
-  else {
-      return ""
-  }
+const deleteGearEntry = (id)=> {
+  return fetch(`  http://localhost:8088/gear/${id}`, {method: "DELETE"})
+    .then(updateGearState)
 }
 
    return <>
@@ -73,11 +62,13 @@ const updateEntry = (e) => {
     <div className="gear-header">
     <input name="title"  type="text" placeholder="Gear name" value={editGear.title} onChange={handleControlledInputChange}/>     <p></p>
    
-     <input type="Date" name="dateTime" value={editGear.dateTime}  onChange={handleControlledInputChange}/>
+     {/*<input type="Date" name="dateTime" value={editGear.dateTime}  onChange={handleControlledInputChange}/>*/}
 </div>
+
 <div className="gear-body">
-<input name="entryText" type="text" placeholder="Gear entry field." value={editGear.weight}  onChange={handleControlledInputChange} />
+<input name="weight" type="text" placeholder="Gear entry field." value={editGear.weight}  onChange={handleControlledInputChange} />
 </div>
+
 <div className="gear-body">
 <textarea name="entryText" className="textarea" placeholder="Gear location field." value={editGear.entryText}  onChange={handleControlledInputChange}> </textarea>
 </div>
