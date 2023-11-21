@@ -13,6 +13,6 @@ export const Message = ({ message }) => {
 
         </section>
     }
-    return <div className="message">{message.user?.name}: {message.message}</div>
+    return <div className="message">{message.user?.fullName}: {message.message}</div>
 
 }

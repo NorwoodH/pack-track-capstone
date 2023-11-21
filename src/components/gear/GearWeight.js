@@ -1,12 +1,9 @@
-
 import { useEffect, useState } from "react"
-
 
 export const WeightSelect = ({handleControlledInputChange, GearEntry}) => {
     const [weights, setWeights] = useState([])
     const [showForm, setShowForm] = useState(false)
     const [newWeight , setNewWeight] = useState({})
-
 
     const handleControlledInputChangeHere = (e) => {
 

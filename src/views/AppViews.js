@@ -33,10 +33,11 @@ export const ApplicationViews = () => {
 								</>
 							}>
 								<Route>
-									
+								
+								{/*  <Route path='Home/HomePage' element={<HomePage/>}/>  */}
 								
 								<Route path= '/gear/create' element={<GearList/>}/>
-								{/*<Route path= '/gear' element={<GearContainer/>} />*/}
+								<Route path= '/gear' element={<GearContainer/>} />
 								
 								<Route path= '/trips/create' element={<TripList/>}/>
 								<Route path= '/trips' element={<TripContainer/>}/>

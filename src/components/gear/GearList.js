@@ -1,34 +1,30 @@
 
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import { GearEntry } from "./GearEntry";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+
+export const GearList = ({gearEntries, deleteGearEntry, updateGearState}) => {
+  const myFunc = (total, num) => {
+    return total + num;
+  }
+  const weightTotal = () => { 
+    const weight = gearEntries.map(x=> + x.weight).reduce(myFunc, 0)
+  console.log(weight)
+  return weight
+}
 
 
-export const GearList = ({ }) => {
 
-const [gearEntries, setGearEntries] = useState([])
- const navigate = useNavigate()
-
-  useEffect(
-    () => {
-      fetch("http://localhost:8088/gear")
-      .then(response => response.json())
-      .then((gearArray) => {
-        setGearEntries(gearArray)
-      })
-    },
-    []
-  )
+  return(
+    <>
+    {
+      gearEntries.map((singleGear) => <GearEntry key={`gear--${singleGear.id}`} singleGear = {singleGear} deleteGearEntry={deleteGearEntry} updateGearState={updateGearState}/> )
+    }
 
     
-return (
-    <>
-    <button onClick={() => navigate("/gear/create")}> Create New Gear </button>
-  {
-    gearEntries.map((singleGear) => {
-    return <>
-    <GearEntry key={`gear--${singleGear.id}`} singleGear = {singleGear} /> </>}) 
-  }
-</>
-)
+  
+   <div className= "gearWeight"> 
+   Total pack weight: {weightTotal()}
+    </div></>
+  )
 }
